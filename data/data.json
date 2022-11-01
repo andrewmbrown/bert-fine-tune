@@ -1,0 +1,795 @@
+{
+    "utterances": [
+        {
+            "text": "Anti-stress feeling",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Breath easier and be healthier",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "Definitely reduce my smoking. I want to quit",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "Definitely stress relief. My work life makes me anxious",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Family is an important part of my life to be honest",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "How it lowers my physical functions",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "How often I reach for a cigarette when I am restless or nervous",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "I also don't like to feel the need to smoke when I'm stressed",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "I don't like how my parents view my habit",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I don't like how people perceive my habit. I feel ashamed",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I don't like how smoking makes me feel so judged",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I don't like the way I am judged",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I don't think I need to change anything",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "I don't want to quit",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "I don't want to quit smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "I feel less stressed",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "I guess I just love the feeling of smoking. it relieves a lot of stress",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "I hate how expensive that is",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "I just really like smoking with friends",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "I love hanging out with friends to smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "I need to fully understand that I do not need cigarettes in my life",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I really don't know. I'm not sure",
+            "entities": [],
+            "traits": []
+        },
+        {
+            "text": "I really don't like how people view me for smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I really don't like how smoking makes me feel so judged",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "I really dont like how smoking stains my teeth",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "I really just want to smoke less",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I really like smoking with friends",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "I really like smoking with friends. its a great way to hangout and take a break",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "I really like the social aspect of smoking, being with friends",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "I think I'll feel more in charge of my habit",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I want to be free of my addiction",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I want to cut down on the amount I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to ideally smoke less than 1 pack a day",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to quit smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to reduce my smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to reduce the amount of cigarettes I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to reduce the amount of cigarettes i smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to reduce the amount that I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to smoke less",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I want to stop smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I will be able to save more money for other things",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "I will feel less burdened",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I will feel less judged.",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I would just generally be more in charge of my life",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "I would like to cut down on my habit",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I would like to only smoke 1 pack a day",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I would like to only smoke on weekends",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I would like to reduce the amount I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I would like to stop smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I would really like to smoke less",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "I'd like to not spend any more money on smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "I'm happy with the way I am",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "I'm worried about my health",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "If I make the change of smoking less I will have more free time to do other things",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "Ill just generally be more in control of my life",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "It calms me down whenever I am anxious, stressed or feeling very emotional",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It decreases my stress",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It helps me with me anxiety",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "It helps me with me anxiety and most of my friends do it in parties",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It is expensive and a waste of money",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "It keeps me calm",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It makes me feel like i am a part of a community",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "It reduces my stress.",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It relaxes me",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "It ruins my health",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "It's kind of expensive",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "Judgement from family",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "Judgement from my grandparents. They hate my habit",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "Money is a big issue for me",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "None at the moment",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Nothing",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Nothing actually",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Nothing at all",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Nothing at the moment",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Nothing really, I feel comfortable with my smoking habits for now",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "Quitting smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "Reduce harmful substances intake",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "Smoke less. I need to cut down the habit",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "Smoking allows me to take a break from work. My life is very busy",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Smoking among friends",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "Smoking gives me time to think alone in peace",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Smoking makes me more relaxed",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Start by smoking less cigarettes throughout the day",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "The harm it does to my health",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "Wake up better, eat better and sleep better",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "Yes it helps with anxiety. Really helps me get away from work",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "Yes, smoking with friends is amazing",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "Yes. smoking is definitely killing me, that bothers me a lot",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "being with friends is important to me",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "definitely health issues, smoking is killing me",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "definitely the crowd. I love smoking with friends",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "health issues. for sure",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "i think i will have more freedom",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "i want to smoke less",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "i will be free of this damned fool's pleasure",
+            "entities": [],
+            "traits": [],
+            "intent": "independence"
+        },
+        {
+            "text": "i will save money",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "i would like to smoke less",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "it calms me down when im overly anxious or stressed",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "it destresses me",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "it makes me feel calm",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "it's a great excuse to socialize",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "just hanging out with friends to smoke is great",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "my children don't like the fact that I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my children hate the fact that I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my family judges me for smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my family judges me for smoking, it makes me ashamed",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my grandparents judge me for smoking. I'm ashamed of the habit",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my health is degradating",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "my parents hate it. I think they are ashamed of me",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "my wallet is gonna feel better",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "nothing",
+            "entities": [],
+            "traits": [],
+            "intent": "adamant"
+        },
+        {
+            "text": "probably cancer. smoking is going to kill me",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "probably the social aspect. Being with friends is great",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "reduce",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "reduce my smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "reduce the amount that I smoke",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "reduction of my smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "reduction"
+        },
+        {
+            "text": "smoking is killing me",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "smoking is slowly killing me",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "smoking is slowly killing me. I'm concerned about my health",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "social aspect of it all",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "spend less money on cigarettes",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "spend less money on smoking",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "taking a break from my life and work",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "the dangerous side effects",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "the effect it has on my body. i can feel my lungs and throat complaining",
+            "entities": [],
+            "traits": [],
+            "intent": "health"
+        },
+        {
+            "text": "the price",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "the price is too high",
+            "entities": [],
+            "traits": [],
+            "intent": "money"
+        },
+        {
+            "text": "the relaxation",
+            "entities": [],
+            "traits": [],
+            "intent": "stress"
+        },
+        {
+            "text": "ya being with family and freinds",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        },
+        {
+            "text": "yes i just really dont like that my grandparents judge me",
+            "entities": [],
+            "traits": [],
+            "intent": "judgement"
+        },
+        {
+            "text": "yes, the social part of it",
+            "entities": [],
+            "traits": [],
+            "intent": "social"
+        }
+    ]
+}
