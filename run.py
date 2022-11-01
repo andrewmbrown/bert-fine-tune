@@ -29,7 +29,7 @@ model_config = {
     'lr' : 2e-5,
     'eps' : 1e-8,
     'train_length' : len(train_dataloader),
-    'epochs' : 2,
+    'epochs' : 15,
     'num_warmup_steps' : 0
 }
 model, optimizer, scheduler = init_model(**model_config)

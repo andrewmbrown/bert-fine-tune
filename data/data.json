@@ -129,7 +129,8 @@
         {
             "text": "I really don't know. I'm not sure",
             "entities": [],
-            "traits": []
+            "traits": [],
+            "intent": "stress"
         },
         {
             "text": "I really don't like how people view me for smoking",

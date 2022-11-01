@@ -220,8 +220,8 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
                 'Validation Time': validation_time
             }
         )
-    """
     print("")
+    """
     print("Training complete!")
 
     print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))
