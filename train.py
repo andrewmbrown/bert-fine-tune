@@ -94,9 +94,9 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
             # __call__ method also invokes forward method but also takes
             # care of hooks and states. We should avoid forward unless needed
             loss = model(input_ids, 
-                                token_type_ids=None, 
-                                attention_mask=input_mask, 
-                                labels=labels).loss
+                        token_type_ids=None, 
+                        attention_mask=input_mask, 
+                        labels=labels).loss
 
             # loss = outputs.loss
             # logits = outputs.logits
@@ -138,7 +138,6 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
         # our validation set.
 
         print("")
-        """
         print("Running Validation...")
 
         t0 = time.time()
@@ -179,12 +178,17 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
                 # https://huggingface.co/transformers/v2.2.0/model_doc/bert.html#transformers.BertForSequenceClassification
                 # Get the "logits" output by the model. The "logits" are the output
                 # values prior to applying an activation function like the softmax.
-                (loss, logits) = model(input_ids, 
-                                    token_type_ids=None, 
-                                    attention_mask=input_mask,
-                                    labels=labels)
+                # forward returns loss, logits, hidden_states, and attentions
+                # we don't need hidden_states or attention, they are trainable model params
+                outputs = model(input_ids,
+                                token_type_ids=None,
+                                attention_mask=input_mask,
+                                labels=labels)
                 
+            loss = outputs['loss']
+            logits = outputs['logits']
             # Accumulate the validation loss.
+            # .item() extracts loss as a float
             total_eval_loss += loss.item()
 
             # Move logits and labels to CPU
@@ -221,7 +225,6 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
             }
         )
     print("")
-    """
     print("Training complete!")
 
     print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))

@@ -27,6 +27,17 @@ def pre_proc(path_to_data):
     df["intent_label"] = df["intent"].cat.codes
     # also return dict of intent to label, for later decoding
     i_to_label = dict(enumerate(df['intent'].cat.categories))
+
+    # Get one hot encoding of intent column
+    df_one_hot_intents = pd.get_dummies(df['intent'])
+    # loop through intents to squeeze into one entry each
+    one_hot_intents = []
+    for idx, row in df_one_hot_intents.iterrows():
+        one_hot_intents.append(row.values)
+    
+    # Join the encoded df
+    df['one_hot_labels'] = one_hot_intents
+
     return df, i_to_label
     
 def initialize_tokenizer():
@@ -70,8 +81,8 @@ def tokenize_dataset(tokenizer, df):
     # Convert the lists into tensors.
     input_ids = torch.cat(input_ids, dim=0)
     attention_masks = torch.cat(attention_masks, dim=0)
-    labels = df['intent_label'].tolist()
-    labels = torch.tensor(labels)
+    labels = df['one_hot_labels'].tolist()
+    labels = torch.tensor(labels, dtype=torch.float32)
 
     # Print sentence 0, now as a list of IDs.
     print('Original: ', df['text'][0])
