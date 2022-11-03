@@ -39,8 +39,14 @@ def get_model_info(model):
 
 # Function to calculate the accuracy of our predictions vs labels
 def flat_accuracy(preds, labels):
+    """
+    Predictions are an array of len 8, each num corresponding to 1 intent
+    Labels are one-hot encoded, each idx corresponding to the label
+    """
+    # from predictions, take largest prob, this is our prediction
     pred_flat = np.argmax(preds, axis=1).flatten()
-    labels_flat = labels.flatten()
+    # from one-hot labels, return the index (this is our answer)
+    labels_flat = np.argmax(labels, axis=1).flatten()
     return np.sum(pred_flat == labels_flat) / len(labels_flat)
 
 def format_time(elapsed):
