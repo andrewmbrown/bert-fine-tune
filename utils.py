@@ -41,6 +41,8 @@ def get_model_info(model):
     for p in params[-4:]:
         print("{:<55} {:>12}".format(p[0], str(tuple(p[1].size()))))
 
+    print("\n\n")
+
 def get_state_dict(model, optimizer):
     """
     Similar to get model info, but for torch state dictionary
@@ -51,11 +53,12 @@ def get_state_dict(model, optimizer):
     for param_tensor in model.state_dict():
         print(param_tensor, "\t", model.state_dict()[param_tensor].size())
 
+    print("\n\n")
     # Print optimizer's state_dict
     print("Optimizer's state_dict:")
     for var_name in optimizer.state_dict():
         print(var_name, "\t", optimizer.state_dict()[var_name])
-
+    print("\n\n")
 
 # Function to calculate the accuracy of our predictions vs labels
 def flat_accuracy(preds, labels):
@@ -159,9 +162,13 @@ def save_model(model, tokenizer):
     model_to_save.save_pretrained(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-    # Good practice: save your training arguments together with the trained model
-    args = model, tokenizer
-    torch.save(args, os.path.join(output_dir, 'training_args.bin'))
+    # also save using pytorch method
+    torch.save(model.state_dict(), os.path.join(output_dir, 'training_args.bin'))
 
-def load_model(path_to_weights):
-    pass
+def load_model(model, path_to_weights):
+    """
+    using saved state_dict and loaded empty (pretrained) model, we load weights
+    """
+    model = torch.load(path_to_weights)
+    model.eval()
+    return model
