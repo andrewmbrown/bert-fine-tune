@@ -116,38 +116,35 @@ def train_test_split(dataset, val_size=0.1):
             )
     return train_dataloader, validation_dataloader
 
-def analyze_train_stats(training_stats):
+def analyze_train_stats(training_stats, show=False, save=False, save_path='./figs'):
+    # Create output directory if needed
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
     # display all floats within two decimal places
     pd.set_option('precision', 2)
     # create dataframe of all training stats
     df = pd.DataFrame(data=training_stats)
     # epoch is row index here
     df = df.set_index('epoch')
-    print(df.head())
-
-    # Use plot styling from seaborn.
-    sns.set(style='darkgrid')
-
-    # Increase the plot size and font size.
-    sns.set(font_scale=1.5)
-    plt.rcParams["figure.figsize"] = (12,6)
 
     # Plot the learning curve.
     plt.plot(df['Training Loss'], 'b-o', label="Training")
     plt.plot(df['Valid. Loss'], 'g-o', label="Validation")
 
     # Label the plot.
-    plt.title("Training & Validation Loss")
+    title = "Training & Validation Loss"
+    plt.title(title)
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.legend()
     plt.xticks([1, 2, 3, 4])
 
-    plt.show()
+    if show: plt.show()
+    if save: plt.savefig(f"{save_path}/{title}.png")
 
-def save_model(model, tokenizer):
+
+def save_model(model, tokenizer, output_dir='./model_save/'):
     # we can reload the model using from_pretrained()
-    output_dir = './model_save/'
 
     # Create output directory if needed
     if not os.path.exists(output_dir):

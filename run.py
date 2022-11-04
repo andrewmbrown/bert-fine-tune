@@ -29,7 +29,7 @@ model_config = {
     'lr' : 2e-5,
     'eps' : 1e-8,
     'train_length' : len(train_dataloader),
-    'epochs' : 20,
+    'epochs' : 3,
     'num_warmup_steps' : 0
 }
 model, optimizer, scheduler = init_model(**model_config)
@@ -42,7 +42,7 @@ get_state_dict(model, optimizer)
 training_stats = train_model(model, optimizer, scheduler, train_dataloader, validation_dataloader, model_config['epochs'], device)
 
 # 5. Analyze training stats
-analyze_train_stats(training_stats)
+analyze_train_stats(training_stats, show=False, save=True, save_path='./figs')
 
 # 6. Validate Model
 
