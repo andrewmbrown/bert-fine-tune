@@ -69,13 +69,10 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
             #   [0]: input ids 
             #   [1]: attention masks
             #   [2]: labels 
-            #input_ids = batch[0].to(device)
-            input_ids = batch[0]
+            input_ids = batch[0].to(device)
             input_ids = input_ids.squeeze(0)  # batch_size, seq_length shape
-            input_mask = batch[1]
-            labels = batch[2]
-            #input_mask = batch[1].to(device)
-            #labels = batch[2].to(device)
+            input_mask = batch[1].to(device)
+            labels = batch[2].to(device)
 
             # Always clear any previously calculated gradients before performing a
             # backward pass. PyTorch doesn't do this automatically because 
