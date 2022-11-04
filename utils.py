@@ -12,11 +12,10 @@ def print_cuda_diagnostic():
     if torch.cuda.is_available():    
         print('There are %d GPU(s) available.' % torch.cuda.device_count())
         print('We will use the GPU:', torch.cuda.get_device_name(0))
-        # device = torch.device("cuda")
+        device = torch.device("cuda")
     else:
         print('No GPU available, using the CPU instead.')
         device = torch.device("cpu")
-    device = torch.device("cpu")
     return device
 
 

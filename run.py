@@ -29,16 +29,23 @@ model_config = {
     'lr' : 2e-5,
     'eps' : 1e-8,
     'train_length' : len(train_dataloader),
-    'epochs' : 3,
+    'epochs' : 20,
     'num_warmup_steps' : 0
 }
 model, optimizer, scheduler = init_model(**model_config)
 
 # 3.5 Print Model Diagnostics
 get_model_info(model)
+get_state_dict(model, optimizer)
 
 # 4. Train Model
-train_model(model, optimizer, scheduler, train_dataloader, validation_dataloader, model_config['epochs'], device)
+training_stats = train_model(model, optimizer, scheduler, train_dataloader, validation_dataloader, model_config['epochs'], device)
 
-# 5. Validate Model
+# 5. Analyze training stats
+analyze_train_stats(training_stats)
+
+# 6. Validate Model
+
+# 7. Save model weights to load later
+save_model(model, bert_tokenizer)
 
