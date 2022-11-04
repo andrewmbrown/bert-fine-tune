@@ -1,4 +1,5 @@
-import json
+import yaml
+import sys
 from bertTokenizer import *
 from utils import *
 from bert import *
@@ -20,18 +21,34 @@ val_size = 0.1
 train_dataloader, validation_dataloader = train_test_split(dataset, val_size)
 
 # 3. Instantiate Model, optimizer, scheduler
-model_config = {
-    'model_name' : 'bert-base-uncased',
-    'num_labels' : 8,
-    'output_attentions' : True,
-    'output_hidden_states' : True,
-    'use_cuda' : False,
-    'lr' : 2e-5,
-    'eps' : 1e-8,
-    'train_length' : len(train_dataloader),
-    'epochs' : 3,
-    'num_warmup_steps' : 0
-}
+# read application_config.yaml file and populate config_dict
+with open("./model_config.yaml", "r") as stream:
+    try:
+        config_dict = yaml.safe_load(stream)
+
+    except yaml.YAMLError as e:
+        print(e)
+        sys.exit(1)
+
+try:
+    model_config = {
+        'model_name' : config_dict['model_config']['model_name'],
+        'num_labels' : config_dict['model_config']['num_labels'],
+        'output_attentions' :config_dict['model_config']['output_attentions'], 
+        'output_hidden_states' :config_dict['model_config']['output_hidden_states'],
+        'use_cuda' : config_dict['model_config']['use_cuda'],
+        'lr' : config_dict['model_config']['lr'],
+        'eps' : config_dict['model_config']['eps'],
+        'train_length' : len(train_dataloader),
+        'epochs' : config_dict['model_config']['epochs'],
+        'num_warmup_steps' : config_dict['model_config']['num_warmup_steps'],
+    }
+
+except KeyError as e:
+    print("Error reading model config file entries.")
+    print(e)
+    sys.exit(1)
+
 model, optimizer, scheduler = init_model(**model_config)
 
 # 3.5 Print Model Diagnostics
