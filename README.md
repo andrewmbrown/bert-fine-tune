@@ -2,5 +2,5 @@ Pytorch based BERT intent classifier. Built for conversational agents
 
 TODO:
 - add .ipynb example
-- add yaml instead of model config dict
+- add better testing for generalization
 - add load and inference function for casual testing

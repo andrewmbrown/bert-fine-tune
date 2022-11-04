@@ -23,6 +23,8 @@ def init_model(model_name: str,
     )
 
     # Tell pytorch to run this model on the GPU.
+    # this line is important for the optimizer, its initialized differently
+    # based on which device the model situates
     if use_cuda: model.cuda()
     else: device = torch.device("cpu")
 
