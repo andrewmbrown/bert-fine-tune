@@ -1,6 +1,10 @@
 import datetime
 import numpy as np
 import torch
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from torch.utils.data import DataLoader, SequentialSampler, random_split, RandomSampler
 
 def print_cuda_diagnostic():
@@ -36,6 +40,22 @@ def get_model_info(model):
 
     for p in params[-4:]:
         print("{:<55} {:>12}".format(p[0], str(tuple(p[1].size()))))
+
+def get_state_dict(model, optimizer):
+    """
+    Similar to get model info, but for torch state dictionary
+    printing state dictionary for model and optimzier
+    """
+    # Print model's state_dict
+    print("Model's state_dict:")
+    for param_tensor in model.state_dict():
+        print(param_tensor, "\t", model.state_dict()[param_tensor].size())
+
+    # Print optimizer's state_dict
+    print("Optimizer's state_dict:")
+    for var_name in optimizer.state_dict():
+        print(var_name, "\t", optimizer.state_dict()[var_name])
+
 
 # Function to calculate the accuracy of our predictions vs labels
 def flat_accuracy(preds, labels):
@@ -93,3 +113,55 @@ def train_test_split(dataset, val_size=0.1):
                 batch_size = batch_size # Evaluate with this batch size.
             )
     return train_dataloader, validation_dataloader
+
+def analyze_train_stats(training_stats):
+    # display all floats within two decimal places
+    pd.set_option('precision', 2)
+    # create dataframe of all training stats
+    df = pd.DataFrame(data=training_stats)
+    # epoch is row index here
+    df = df.set_index('epoch')
+    print(df.head())
+
+    # Use plot styling from seaborn.
+    sns.set(style='darkgrid')
+
+    # Increase the plot size and font size.
+    sns.set(font_scale=1.5)
+    plt.rcParams["figure.figsize"] = (12,6)
+
+    # Plot the learning curve.
+    plt.plot(df['Training Loss'], 'b-o', label="Training")
+    plt.plot(df['Valid. Loss'], 'g-o', label="Validation")
+
+    # Label the plot.
+    plt.title("Training & Validation Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.xticks([1, 2, 3, 4])
+
+    plt.show()
+
+def save_model(model, tokenizer):
+    # we can reload the model using from_pretrained()
+    output_dir = './model_save/'
+
+    # Create output directory if needed
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    print("Saving model to %s" % output_dir)
+
+    # Save a trained model, configuration and tokenizer using `save_pretrained()`.
+    # They can then be reloaded using `from_pretrained()`
+    model_to_save = model.module if hasattr(model, 'module') else model  # Take care of distributed/parallel training
+    model_to_save.save_pretrained(output_dir)
+    tokenizer.save_pretrained(output_dir)
+
+    # Good practice: save your training arguments together with the trained model
+    args = model, tokenizer
+    torch.save(args, os.path.join(output_dir, 'training_args.bin'))
+
+def load_model(path_to_weights):
+    pass
