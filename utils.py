@@ -4,7 +4,6 @@ import torch
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 from torch.utils.data import DataLoader, SequentialSampler, random_split, RandomSampler
 
 def print_cuda_diagnostic():
