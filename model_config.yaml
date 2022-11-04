@@ -1,0 +1,10 @@
+model_config:
+  model_name : 'bert-base-uncased'
+  num_labels : 8
+  output_attentions : true
+  output_hidden_states : true
+  use_cuda : false
+  lr : 2.0e-5
+  eps : 1.0e-8
+  epochs : 3
+  num_warmup_steps : 0
