@@ -21,34 +21,7 @@ val_size = 0.1
 train_dataloader, validation_dataloader = train_test_split(dataset, val_size)
 
 # 3. Instantiate Model, optimizer, scheduler
-# read application_config.yaml file and populate config_dict
-with open("./model_config.yaml", "r") as stream:
-    try:
-        config_dict = yaml.safe_load(stream)
-
-    except yaml.YAMLError as e:
-        print(e)
-        sys.exit(1)
-
-try:
-    model_config = {
-        'model_name' : config_dict['model_config']['model_name'],
-        'num_labels' : config_dict['model_config']['num_labels'],
-        'output_attentions' :config_dict['model_config']['output_attentions'], 
-        'output_hidden_states' :config_dict['model_config']['output_hidden_states'],
-        'use_cuda' : config_dict['model_config']['use_cuda'],
-        'lr' : config_dict['model_config']['lr'],
-        'eps' : config_dict['model_config']['eps'],
-        'train_length' : len(train_dataloader),
-        'epochs' : config_dict['model_config']['epochs'],
-        'num_warmup_steps' : config_dict['model_config']['num_warmup_steps'],
-    }
-
-except KeyError as e:
-    print("Error reading model config file entries.")
-    print(e)
-    sys.exit(1)
-
+model_config = config_model(train_data_len=len(train_dataloader), path_to_config='.', config_file='model_config.yaml')
 model, optimizer, scheduler = init_model(**model_config)
 
 # 3.5 Print Model Diagnostics
