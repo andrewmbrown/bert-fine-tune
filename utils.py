@@ -2,6 +2,8 @@ import datetime
 import numpy as np
 import torch
 import os
+import sys
+import yaml
 import pandas as pd
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, SequentialSampler, random_split, RandomSampler
@@ -141,6 +143,40 @@ def analyze_train_stats(training_stats, show=False, save=False, save_path='./fig
     if show: plt.show()
     if save: plt.savefig(f"{save_path}/{title}.png")
 
+def config_model(train_data_len, path_to_config='.', config_file='model_config.yaml'):
+    """
+    configure model dictionary from yaml file
+    only setting up dict, not instantiating model
+    """
+    # read application_config.yaml file and populate config_dict
+    with open(f"{path_to_config}/{config_file}", "r") as stream:
+        try:
+            config_dict = yaml.safe_load(stream)
+
+        except yaml.YAMLError as e:
+            print(e)
+            sys.exit(1)
+
+    try:
+        model_config = {
+            'model_name' : config_dict['model_config']['model_name'],
+            'num_labels' : config_dict['model_config']['num_labels'],
+            'output_attentions' :config_dict['model_config']['output_attentions'], 
+            'output_hidden_states' :config_dict['model_config']['output_hidden_states'],
+            'use_cuda' : config_dict['model_config']['use_cuda'],
+            'lr' : config_dict['model_config']['lr'],
+            'eps' : config_dict['model_config']['eps'],
+            'train_length' : train_data_len,
+            'epochs' : config_dict['model_config']['epochs'],
+            'num_warmup_steps' : config_dict['model_config']['num_warmup_steps'],
+        }
+
+    except KeyError as e:
+        print("Error reading model config file entries.")
+        print(e)
+        sys.exit(1)
+    
+    return model_config
 
 def save_model(model, tokenizer, output_dir='./model_save/'):
     # we can reload the model using from_pretrained()
@@ -160,10 +196,37 @@ def save_model(model, tokenizer, output_dir='./model_save/'):
     # also save using pytorch method
     torch.save(model.state_dict(), os.path.join(output_dir, 'training_args.bin'))
 
-def load_model(model, path_to_weights):
+def load_model(model, path_to_weights='.', weights_file='training_args.bin', device='cpu'):
     """
     using saved state_dict and loaded empty (pretrained) model, we load weights
     """
-    model = torch.load(path_to_weights)
-    model.eval()
+    try:
+        model = torch.load(f"{path_to_weights}/{weights_file}", map_location=torch.device(device))
+    except Exception as e:
+        print("Model not loaded successfully")
+        print(e)
+    
     return model
+    
+def inference(model, tokenizer, input=None):
+    # set model to eval model, e.g. dropout and batch normalization
+    # are turned off
+    model.eval()
+    # allow for either pre-written inputs, or live typing
+    if input is not None:
+        for i in input:
+            tokens = tokenizer(i)
+            with torch.no_grad:
+                outputs = model(input_ids,
+                                token_type_ids=None,
+                                attention_mask = input_mask,
+                                labels=labels)
+
+    else:
+        while True:
+            print("Enter text for classifier (enter STOP to end)")
+            input = sys.stdin
+            if input == "STOP":
+                break
+    return
+    
