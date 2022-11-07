@@ -82,7 +82,7 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
 
             # Perform a forward pass (evaluate the model on this training batch).
             # The documentation for this `model` function is here: 
-            # https://huggingface.co/transformers/v2.2.0/model_doc/bert.html#transformers.BertForSequenceClassification
+            # https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForSequenceClassification
             # It returns different numbers of parameters depending on what arguments
             # arge given and what flags are set. For our useage here, it returns
             # the loss (because we provided labels) and the "logits"--the model
@@ -172,7 +172,7 @@ def train_model(model, optimizer, scheduler, train_dataloader, validation_datalo
                 # token_type_ids is the same as the "segment ids", which 
                 # differentiates sentence 1 and 2 in 2-sentence tasks.
                 # The documentation for this `model` function is here: 
-                # https://huggingface.co/transformers/v2.2.0/model_doc/bert.html#transformers.BertForSequenceClassification
+                # https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForSequenceClassification
                 # Get the "logits" output by the model. The "logits" are the output
                 # values prior to applying an activation function like the softmax.
                 # forward returns loss, logits, hidden_states, and attentions
