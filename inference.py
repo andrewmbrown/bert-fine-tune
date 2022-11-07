@@ -13,6 +13,7 @@ model, optimizer, scheduler = init_model(**model_config)
 model = load_model(model, path_to_weights='./model_save', weights_file='training_args.bin', device='cpu')
 
 # inference and test model
-
+input = ['I want to reduce my smoking']
+preds = inference(model, tokenizer, input=None, device='cpu')
 
 

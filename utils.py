@@ -8,6 +8,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, SequentialSampler, random_split, RandomSampler
 
+i_to_label = {
+    0: 'adamant',
+    1: 'health',
+    2: 'independence',
+    3: 'judgement',
+    4: 'money',
+    5: 'reduction',
+    6: 'social',
+    7: 'stress'
+}
+
 def print_cuda_diagnostic():
     # If there's a GPU available...
     if torch.cuda.is_available():    
@@ -212,6 +223,7 @@ def load_model(model, path_to_weights='.', weights_file='training_args.bin', dev
     return model
     
 def inference(model, tokenizer, input=None, device='cpu'):
+    preds = []
     # set model to eval model, e.g. dropout and batch normalization are turned off
     model.eval()
     # allow for either pre-written inputs, or live typing
@@ -240,23 +252,27 @@ def inference(model, tokenizer, input=None, device='cpu'):
             
             # obtain prediction logits and mount them on cpu device
             logits = outputs['logits']
-            logits = logits.detach().cpu.numpy()
+            logits = logits.detach().cpu().numpy()
 
-            pred = np.argmax(logits, dim=0)
+            # logits are list of list so we probe axis 1
+            pred = np.argmax(logits, axis=1)[0]
+            preds.append([i, pred])
+            print(f"\nINPUT: {i}, PRED: {i_to_label[pred]}\n")
 
     # live typing inputs to model from stdin
     else:
         while True:
             print("Enter text for classifier (enter STOP to end)")
-            input = sys.stdin
-            if input == "STOP":
+            # input from stdin, strip to remove newline char
+            i = sys.stdin.readline().strip()
+            if i == "STOP":
                 break
             encoded_dict = tokenizer.encode_plus(i,
                                     add_special_tokens=True,
                                     max_length=100,
                                     padding='max_length',
                                     return_attention_mask=True, 
-                                    returnn_tensors='pt'
+                                    return_tensors='pt'
                                     )
             # grab input id tokens for model
             tokens = encoded_dict['input_ids']
@@ -264,22 +280,21 @@ def inference(model, tokenizer, input=None, device='cpu'):
             # grab attention mask
             attention_mask = encoded_dict['attention_mask']
 
-            # convert tokens and masks to tensors
-            tokens = torch.cat(tokens, dim=0)
-            attention_mask = torch.cat(attention_mask, dim=0)
-
             tokens = tokens.to(device)
             attention_mask = attention_mask.to(device)
 
-            with torch.no_grad:
+            with torch.no_grad():
                 outputs = model(tokens,
                                 token_type_ids=None,
                                 attention_mask=attention_mask)
             
             # obtain prediction logits and mount them on cpu device
             logits = outputs['logits']
-            logits = logits.detach().cpu.numpy()
+            logits = logits.detach().cpu().numpy()
 
-            pred = np.argmax(logits, dim=0)
-    return
-    
+            # logits are list of list so we probe axis 1
+            pred = np.argmax(logits, axis=1)[0]
+            preds.append([i, pred])
+            print(f"\nINPUT: {i}, PRED: {i_to_label[pred]}\n")
+
+    return preds   
