@@ -82,6 +82,7 @@ def tokenize_dataset(tokenizer, df):
     input_ids = torch.cat(input_ids, dim=0)
     attention_masks = torch.cat(attention_masks, dim=0)
     labels = df['one_hot_labels'].tolist()
+    # labels are dtype float 32 for consistency (enncoder outputs float 32)
     labels = torch.tensor(labels, dtype=torch.float32)
 
     # Print sentence 0, now as a list of IDs.
@@ -91,5 +92,3 @@ def tokenize_dataset(tokenizer, df):
     # Combine the training inputs into a TensorDataset.
     dataset = TensorDataset(input_ids, attention_masks, labels)
     return dataset
-
-
