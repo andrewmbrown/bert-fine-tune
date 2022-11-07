@@ -199,34 +199,87 @@ def save_model(model, tokenizer, output_dir='./model_save/'):
 def load_model(model, path_to_weights='.', weights_file='training_args.bin', device='cpu'):
     """
     using saved state_dict and loaded empty (pretrained) model, we load weights
+    first we load state_dict, then we load that state dict into our model
     """
     try:
-        model = torch.load(f"{path_to_weights}/{weights_file}", map_location=torch.device(device))
+        state_dict = torch.load(f"{path_to_weights}/{weights_file}", map_location=torch.device(device))
     except Exception as e:
         print("Model not loaded successfully")
         print(e)
     
+    # state_dict contains our trained and finetuned model weights - load them onto a base model
+    model.load_state_dict(state_dict)   
     return model
     
-def inference(model, tokenizer, input=None):
-    # set model to eval model, e.g. dropout and batch normalization
-    # are turned off
+def inference(model, tokenizer, input=None, device='cpu'):
+    # set model to eval model, e.g. dropout and batch normalization are turned off
     model.eval()
     # allow for either pre-written inputs, or live typing
     if input is not None:
         for i in input:
-            tokens = tokenizer(i)
-            with torch.no_grad:
-                outputs = model(input_ids,
-                                token_type_ids=None,
-                                attention_mask = input_mask,
-                                labels=labels)
+            encoded_dict = tokenizer.encode_plus(i,
+                                                add_special_tokens=True,
+                                                max_length=100,
+                                                padding='max_length',
+                                                return_attention_mask=True, 
+                                                return_tensors='pt'
+                                                )
+            # grab input id tokens for model
+            tokens = encoded_dict['input_ids']
 
+            # grab attention mask
+            attention_mask = encoded_dict['attention_mask']
+
+            tokens = tokens.to(device)
+            attention_mask = attention_mask.to(device)
+
+            with torch.no_grad():
+                outputs = model(tokens,
+                                token_type_ids=None,
+                                attention_mask=attention_mask)
+            
+            # obtain prediction logits and mount them on cpu device
+            logits = outputs['logits']
+            logits = logits.detach().cpu.numpy()
+
+            pred = np.argmax(logits, dim=0)
+
+    # live typing inputs to model from stdin
     else:
         while True:
             print("Enter text for classifier (enter STOP to end)")
             input = sys.stdin
             if input == "STOP":
                 break
+            encoded_dict = tokenizer.encode_plus(i,
+                                    add_special_tokens=True,
+                                    max_length=100,
+                                    padding='max_length',
+                                    return_attention_mask=True, 
+                                    returnn_tensors='pt'
+                                    )
+            # grab input id tokens for model
+            tokens = encoded_dict['input_ids']
+
+            # grab attention mask
+            attention_mask = encoded_dict['attention_mask']
+
+            # convert tokens and masks to tensors
+            tokens = torch.cat(tokens, dim=0)
+            attention_mask = torch.cat(attention_mask, dim=0)
+
+            tokens = tokens.to(device)
+            attention_mask = attention_mask.to(device)
+
+            with torch.no_grad:
+                outputs = model(tokens,
+                                token_type_ids=None,
+                                attention_mask=attention_mask)
+            
+            # obtain prediction logits and mount them on cpu device
+            logits = outputs['logits']
+            logits = logits.detach().cpu.numpy()
+
+            pred = np.argmax(logits, dim=0)
     return
     
